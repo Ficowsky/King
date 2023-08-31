@@ -19,7 +19,7 @@ namespace ConsoleApp1
                 Console.WriteLine("Ha! I knew it!");
             }
 
-            Console.WriteLine("Where are you from, " + name + "?");
+            Console.WriteLine($"Where are you from, {name}?");
             string place = Console.ReadLine()!;
             if (string.IsNullOrWhiteSpace(place))
             {
@@ -78,6 +78,39 @@ namespace ConsoleApp1
                 nextMapRowPosition++;
                 Console.ReadKey(true);
             }
+            Console.Clear();
+            foreach (string row in level)
+            {
+                Console.WriteLine(row);
+            }
+            int playerColumn = 3;
+            int playerRow = 3;
+
+            while (true)
+            {
+                Console.SetCursorPosition(playerColumn, playerRow);
+                Console.Write("@");
+
+                ConsoleKeyInfo keyinfo = Console.ReadKey(true);
+
+                if (keyinfo.Key == ConsoleKey.LeftArrow)
+                {
+                    playerColumn--;
+                }
+                else if (keyinfo.Key == ConsoleKey.RightArrow)
+            {
+                    playerColumn++;
+                }
+             else if (keyinfo.Key == ConsoleKey.UpArrow)
+             {
+                    playerRow--;
+                }
+             else if (keyinfo.Key == ConsoleKey.DownArrow)
+             {
+                    playerRow++;
+                }
+            }
+            Console.SetCursorPosition(0, level.Length);
         }
     }
 }
