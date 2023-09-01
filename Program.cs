@@ -93,6 +93,11 @@ namespace ConsoleApp1
 
                 ConsoleKeyInfo keyinfo = Console.ReadKey(true);
 
+                 Console.SetCursorPosition(playerColumn, playerRow);
+                 string currentRow = level[playerRow];
+                 char currentCell = currentRow[playerColumn];
+                Console.Write(currentCell);
+
                 if (keyinfo.Key == ConsoleKey.LeftArrow)
                 {
                     playerColumn--;
@@ -110,6 +115,7 @@ namespace ConsoleApp1
                     playerRow++;
                 }
             }
+
             Console.SetCursorPosition(0, level.Length);
         }
     }
