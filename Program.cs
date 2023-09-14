@@ -83,7 +83,7 @@ namespace ConsoleApp1
             {
                 Console.WriteLine(row);
             }
-            int playerColumn = 3;
+            int playerColumn = 2;
             int playerRow = 3;
 
             while (true)
@@ -91,28 +91,47 @@ namespace ConsoleApp1
                 Console.SetCursorPosition(playerColumn, playerRow);
                 Console.Write("@");
 
-                ConsoleKeyInfo keyinfo = Console.ReadKey(true);
+                ConsoleKeyInfo keyInfo = Console.ReadKey(true);
 
-                 Console.SetCursorPosition(playerColumn, playerRow);
-                 string currentRow = level[playerRow];
-                 char currentCell = currentRow[playerColumn];
+                Console.SetCursorPosition(playerColumn, playerRow);
+                string currentRow = level[playerRow];
+                char currentCell = currentRow[playerColumn];
                 Console.Write(currentCell);
 
-                if (keyinfo.Key == ConsoleKey.LeftArrow)
+                int targetColumn = playerColumn;
+                int targetRow = playerRow;
+
+                if (keyInfo.Key == ConsoleKey.LeftArrow)
                 {
-                    playerColumn--;
+                    targetColumn = playerColumn - 1;
                 }
-                else if (keyinfo.Key == ConsoleKey.RightArrow)
-            {
-                    playerColumn++;
+                else if (keyInfo.Key == ConsoleKey.RightArrow)
+                {
+                    playerColumn = playerColumn + 1;
                 }
-             else if (keyinfo.Key == ConsoleKey.UpArrow)
-             {
-                    playerRow--;
+                else if (keyInfo.Key == ConsoleKey.UpArrow)
+                {
+                    playerRow = playerRow - 1;
                 }
-             else if (keyinfo.Key == ConsoleKey.DownArrow)
-             {
-                    playerRow++;
+                else if (keyInfo.Key == ConsoleKey.DownArrow)
+                {
+                    playerRow = playerRow + 1;
+                }
+
+                else
+                {
+                    break;
+                }
+
+                if (targetColumn >= 0 && targetColumn < level[playerRow].Length && level[playerRow][targetColumn] != '#')
+                {
+                    playerColumn = targetColumn;
+                }
+
+                if (targetColumn >= 0 && targetRow < level.Length && level[targetRow][playerColumn] != '#')
+
+                {
+                    playerRow = targetRow;
                 }
             }
 
