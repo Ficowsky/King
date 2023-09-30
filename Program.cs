@@ -88,7 +88,7 @@ namespace ConsoleApp1
 
             while (true)
             {
-                WriteAt(playerColumn, playerRow, "@");
+                King.Display.WriteAt(playerColumn, playerRow, "@");
 
 
                 ConsoleKeyInfo keyInfo = Console.ReadKey(true);
@@ -96,7 +96,8 @@ namespace ConsoleApp1
 
                 string currentRow = level[playerRow];
                 char currentCell = currentRow[playerColumn];
-                WriteAt(playerColumn, playerRow, currentCell);
+                King.Display.WriteAt(playerColumn, playerRow, currentCell);
+
 
 
                 int targetColumn = playerColumn;
@@ -140,17 +141,6 @@ namespace ConsoleApp1
             }
 
             Console.SetCursorPosition(0, level.Length);
-        }
-
-        static void WriteAt(int columnNumber, int rowNumber, string text)
-        {
-            Console.SetCursorPosition(columnNumber, rowNumber);
-            Console.Write(text);
-        }
-        static void WriteAt(int columnNumber, int rowNumber, char sign)
-        {
-            Console.SetCursorPosition(columnNumber, rowNumber);
-            Console.Write(sign);
         }
     }
 }
