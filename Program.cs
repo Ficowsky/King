@@ -1,4 +1,6 @@
 ﻿// See https://aka.ms/new-console-template for more 
+using King;
+
 namespace ConsoleApp1
 {
     class MainClass
@@ -78,49 +80,50 @@ namespace ConsoleApp1
                 nextMapRowPosition++;
                 Console.ReadKey(true);
             }
+
             Console.Clear();
             foreach (string row in level)
             {
                 Console.WriteLine(row);
             }
-            int playerColumn = 2;
-            int playerRow = 3;
+            
+            Player player = new Player();
 
             while (true)
             {
-                King.Display.WriteAt(playerColumn, playerRow, "@");
+                King.Display.WriteAt(player.playerColumn, player.playerRow, player.avatar);
 
 
                 ConsoleKeyInfo keyInfo = Console.ReadKey(true);
 
 
-                string currentRow = level[playerRow];
-                char currentCell = currentRow[playerColumn];
-                King.Display.WriteAt(playerColumn, playerRow, currentCell);
+                string currentRow = level[player.playerRow];
+                char currentCell = currentRow[player.playerColumn];
+                King.Display.WriteAt(player.playerColumn, player.playerRow, currentCell);
 
 
 
-                int targetColumn = playerColumn;
-                int targetRow = playerRow;
+                int targetColumn = player.playerColumn;
+                int targetRow = player.playerRow;
 
                 if (keyInfo.Key == ConsoleKey.LeftArrow)
                 {
-                    targetColumn = playerColumn - 1;
+                    targetColumn = player.playerColumn - 1;
                 }
 
                 else if (keyInfo.Key == ConsoleKey.RightArrow)
                 {
-                    targetColumn = playerColumn + 1;
+                    targetColumn = player.playerColumn + 1;
                 }
 
                 else if (keyInfo.Key == ConsoleKey.UpArrow)
                 {
-                    targetRow = playerRow - 1;
+                    targetRow = player.playerRow - 1;
                 }
 
                 else if (keyInfo.Key == ConsoleKey.DownArrow)
                 {
-                    targetRow = playerRow + 1;
+                    targetRow = player.playerRow + 1;
                 }
 
                 else
@@ -128,15 +131,15 @@ namespace ConsoleApp1
                     break;
                 }
 
-                if (targetColumn >= 0 && targetColumn < level[playerRow].Length && level[playerRow][targetColumn] != '#')
+                if (targetColumn >= 0 && targetColumn < level[player.playerRow].Length && level[player.playerRow][targetColumn] != '#')
                 {
-                    playerColumn = targetColumn;
+                    player.playerColumn = targetColumn;
                 }
 
-                if (targetColumn >= 0 && targetRow < level.Length && level[targetRow][playerColumn] != '#')
+                if (targetColumn >= 0 && targetRow < level.Length && level[targetRow][player.playerColumn] != '#')
 
                 {
-                    playerRow = targetRow;
+                    player.playerRow = targetRow;
                 }
             }
 
