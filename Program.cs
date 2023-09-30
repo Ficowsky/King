@@ -91,39 +91,39 @@ namespace ConsoleApp1
 
             while (true)
             {
-                King.Display.WriteAt(player.playerColumn, player.playerRow, player.avatar);
+                King.Display.WriteAt(player.x, player.y, player.avatar);
 
 
                 ConsoleKeyInfo keyInfo = Console.ReadKey(true);
 
 
-                string currentRow = level[player.playerRow];
-                char currentCell = currentRow[player.playerColumn];
-                King.Display.WriteAt(player.playerColumn, player.playerRow, currentCell);
+                string currentRow = level[player.y];
+                char currentCell = currentRow[player.x];
+                King.Display.WriteAt(player.x, player.y, currentCell);
 
 
 
-                int targetColumn = player.playerColumn;
-                int targetRow = player.playerRow;
+                int targetColumn = player.x;
+                int targetRow = player.y;
 
                 if (keyInfo.Key == ConsoleKey.LeftArrow)
                 {
-                    targetColumn = player.playerColumn - 1;
+                    targetColumn = player.x - 1;
                 }
 
                 else if (keyInfo.Key == ConsoleKey.RightArrow)
                 {
-                    targetColumn = player.playerColumn + 1;
+                    targetColumn = player.x + 1;
                 }
 
                 else if (keyInfo.Key == ConsoleKey.UpArrow)
                 {
-                    targetRow = player.playerRow - 1;
+                    targetRow = player.y - 1;
                 }
 
                 else if (keyInfo.Key == ConsoleKey.DownArrow)
                 {
-                    targetRow = player.playerRow + 1;
+                    targetRow = player.y + 1;
                 }
 
                 else
@@ -131,15 +131,15 @@ namespace ConsoleApp1
                     break;
                 }
 
-                if (targetColumn >= 0 && targetColumn < level[player.playerRow].Length && level[player.playerRow][targetColumn] != '#')
+                if (targetColumn >= 0 && targetColumn < level[player.y].Length && level[player.y][targetColumn] != '#')
                 {
-                    player.playerColumn = targetColumn;
+                    player.x = targetColumn;
                 }
 
-                if (targetColumn >= 0 && targetRow < level.Length && level[targetRow][player.playerColumn] != '#')
+                if (targetColumn >= 0 && targetRow < level.Length && level[targetRow][player.x] != '#')
 
                 {
-                    player.playerRow = targetRow;
+                    player.y = targetRow;
                 }
             }
 
