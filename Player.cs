@@ -2,8 +2,15 @@ namespace King
 {
  class Player
  {
-        public int x = 2;
-        public int y = 3;
+        public int x;
+        public int y;
         public string avatar = "@";
+
+        public Player(int x, int y, string avatar)
+        {
+              this.x = x;
+              this.y = y;
+              this.avatar = avatar;
+        }
  }
 }

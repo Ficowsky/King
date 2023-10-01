@@ -87,7 +87,7 @@ namespace ConsoleApp1
                 Console.WriteLine(row);
             }
             
-            Player player = new Player();
+            Player player = new Player(2, 3, "@");
 
             while (true)
             {
